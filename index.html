@@ -1,245 +1,336 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Jay Shelke — Full Stack Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="icon" type="image/jpeg" href="https://static.vecteezy.com/system/resources/previews/002/363/105/original/developer-icon-free-vector.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="style.css"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jay Shelke — Full-Stack Developer</title>
+<meta name="description" content="Jay Shelke — full-stack developer building real-time, transactional, and secure web applications." />
+<link rel="icon" href="avatar.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0b0d;--bg2:#111318;--bg3:#171a20;--panel:#14161b;--panel2:#1b1e25;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.16);
+  --text:#edece6;--text2:#9598a1;--text3:#5d6068;
+  --accent:#ff9d4d;--accent-dim:rgba(255,157,77,0.12);
+  --cyan:#5fd8cf;--cyan-dim:rgba(95,216,207,0.12);
+  --green:#57d38c;--red:#f2685c;
+  --font-display:'Space Grotesk',sans-serif;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace;
+  --nav-h:64px;--shadow:0 20px 60px rgba(0,0,0,0.45);--radius:14px;
+}
+[data-theme="light"]{
+  --bg:#f6f5f1;--bg2:#eeece5;--bg3:#e5e3da;--panel:#ffffff;--panel2:#f1efe8;
+  --border:rgba(20,20,15,0.09);--border2:rgba(20,20,15,0.16);
+  --text:#17181a;--text2:#5a5c62;--text3:#8d8f96;
+  --accent:#e07a25;--accent-dim:rgba(224,122,37,0.10);
+  --cyan:#0d9488;--cyan-dim:rgba(13,148,136,0.10);
+  --green:#15803d;--red:#c0392b;
+  --shadow:0 20px 50px rgba(20,20,15,0.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .4s,color .4s;font-size:16px;}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+code{font-family:var(--font-mono);}
+
+.js-anim .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
+.js-anim .reveal.visible{opacity:1;transform:translateY(0);}
+.js-anim .reveal.d2{transition-delay:.08s;}
+.js-anim .reveal.d3{transition-delay:.16s;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(10,11,13,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background .4s,border-color .4s;}
+[data-theme="light"] nav{background:rgba(246,245,241,.88);}
+.logo{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px;letter-spacing:-.01em;}
+.logo img{width:28px;height:28px;border-radius:7px;object-fit:cover;border:1px solid var(--border2);}
+.nav-links{display:flex;gap:30px;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--text2);font-family:var(--font-mono);font-size:.76rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;position:relative;padding-bottom:3px;transition:color .2s;}
+.nav-links a::before{content:'';display:inline-block;width:5px;height:5px;background:var(--accent);border-radius:1px;margin-right:8px;opacity:0;transition:opacity .2s;vertical-align:middle;}
+.nav-links a:hover,.nav-links a.active{color:var(--text);}
+.nav-links a:hover::before,.nav-links a.active::before{opacity:1;}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.theme-btn{width:42px;height:23px;border-radius:12px;cursor:pointer;outline:none;background:var(--bg3);border:1px solid var(--border2);position:relative;transition:background .3s;}
+.theme-btn::after{content:'';position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:var(--accent);transition:transform .3s;}
+[data-theme="light"] .theme-btn::after{transform:translateX(19px);}
+.btn-hire{background:var(--text);color:var(--bg);border:none;padding:9px 18px;border-radius:8px;font-family:var(--font-display);font-size:.8rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:transform .2s,opacity .2s;}
+.btn-hire:hover{transform:translateY(-2px);opacity:.85;}
+
+/* BUTTONS */
+.btn-primary{background:var(--accent);color:#181008;border:none;padding:13px 24px;border-radius:9px;font-family:var(--font-display);font-size:.9rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s,filter .2s;box-shadow:0 6px 24px rgba(255,157,77,.25);}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08);}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border2);padding:12px 24px;border-radius:9px;font-family:var(--font-display);font-size:.9rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s,background .2s,transform .2s;}
+.btn-outline:hover{border-color:var(--accent);background:var(--accent-dim);transform:translateY(-2px);}
+
+/* SECTION BASE */
+section{padding:108px 6%;max-width:1180px;margin:0 auto;}
+.slabel{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.slabel .idx{color:var(--text3);}
+h2.stitle{font-family:var(--font-display);font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-bottom:56px;max-width:680px;}
+h2.stitle .hl{color:var(--accent);}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:calc(var(--nav-h) + 40px);padding-bottom:60px;padding-left:6%;padding-right:6%;display:flex;flex-direction:column;justify-content:center;position:relative;max-width:1180px;margin:0 auto;}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(ellipse 50% 45% at 78% 15%,rgba(255,157,77,.10) 0%,transparent 60%),
+  radial-gradient(ellipse 40% 40% at 8% 85%,rgba(95,216,207,.06) 0%,transparent 55%);
+}
+.status-row{position:relative;z-index:1;display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.78rem;color:var(--text2);letter-spacing:.02em;margin-bottom:34px;}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(87,211,140,.16);flex-shrink:0;position:relative;}
+.status-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--green);opacity:.5;animation:ping 2.4s ease-out infinite;}
+@keyframes ping{0%{transform:scale(.7);opacity:.6;}100%{transform:scale(1.9);opacity:0;}}
+.hero h1{position:relative;z-index:1;font-family:var(--font-display);font-size:clamp(2.4rem,5.4vw,4.1rem);font-weight:600;letter-spacing:-.03em;line-height:1.08;max-width:840px;}
+.hero h1 .hl{color:var(--accent);}
+.hero p.sub{position:relative;z-index:1;max-width:560px;margin-top:24px;color:var(--text2);font-size:1.05rem;}
+.hero-cta{position:relative;z-index:1;display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;}
+.hero-avatar-wrap{position:absolute;top:calc(var(--nav-h) + 40px);right:6%;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.hero-avatar{width:88px;height:88px;border-radius:16px;object-fit:cover;border:1px solid var(--border2);}
+.hero-avatar-tag{font-family:var(--font-mono);font-size:.65rem;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;}
+
+.specstrip{position:relative;z-index:1;margin-top:76px;display:grid;grid-template-columns:repeat(2,1fr);max-width:520px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.specstrip .sitem{padding:22px 22px 22px 0;border-right:1px solid var(--border);}
+.specstrip .sitem:last-child{border-right:none;padding-right:0;}
+.specstrip .sitem b{display:block;font-family:var(--font-display);font-size:1.5rem;font-weight:600;letter-spacing:-.02em;margin-bottom:4px;}
+.specstrip .sitem span{font-family:var(--font-mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;}
+
+/* ABOUT */
+.about-wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:70px;align-items:start;}
+.about-p{color:var(--text2);font-size:1.02rem;margin-bottom:18px;}
+.about-p b{color:var(--text);font-weight:600;}
+.skills-block{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--panel);}
+.skills-head{padding:14px 18px;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);}
+.skill-chip{background:var(--panel);padding:16px 18px;display:flex;flex-direction:column;gap:6px;transition:background .2s,transform .2s;position:relative;}
+.skill-chip:hover{background:var(--panel2);transform:translateY(-1px);}
+.skill-chip .sc-top{display:flex;align-items:center;gap:10px;}
+.skill-chip .sc-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+.skill-chip .sc-name{font-size:.87rem;font-weight:600;letter-spacing:-.01em;}
+.skill-chip .sc-cat{font-family:var(--font-mono);font-size:.63rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;padding-left:18px;}
+.cat-language .sc-dot{background:var(--accent);}
+.cat-frontend .sc-dot{background:var(--cyan);}
+.cat-backend .sc-dot{background:var(--green);}
+.cat-database .sc-dot{background:#8b8fff;}
+.cat-security .sc-dot{background:var(--red);}
+.cat-tools .sc-dot{background:#c9a34e;}
+@media(max-width:520px){.skills-grid{grid-template-columns:1fr;}}
+
+/* PROJECTS */
+.project-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:28px;box-shadow:var(--shadow);overflow:hidden;}
+.pc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:30px 32px;border-bottom:1px solid var(--border);}
+.pc-id{display:flex;align-items:center;gap:16px;}
+.pc-logo{width:48px;height:48px;border-radius:11px;object-fit:cover;background:#fff;border:1px solid var(--border2);flex-shrink:0;}
+.pc-title-row{display:flex;align-items:center;gap:10px;}
+.pc-title{font-family:var(--font-display);font-size:1.32rem;font-weight:600;letter-spacing:-.01em;}
+.pc-status{display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:.66rem;color:var(--green);text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border:1px solid rgba(87,211,140,.3);border-radius:20px;background:rgba(87,211,140,.08);}
+.pc-status .dot{width:5px;height:5px;border-radius:50%;background:var(--green);}
+.pc-links{display:flex;gap:10px;flex-wrap:wrap;}
+.pc-links a{font-family:var(--font-mono);font-size:.74rem;font-weight:500;text-decoration:none;color:var(--text2);border:1px solid var(--border2);padding:8px 14px;border-radius:7px;display:inline-flex;align-items:center;gap:6px;transition:.2s;}
+.pc-links a:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-dim);}
+.pc-body{padding:28px 32px 32px;}
+.pc-desc{color:var(--text2);font-size:.96rem;margin-bottom:24px;max-width:760px;}
+.pc-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{background:var(--cyan-dim);color:var(--cyan);font-family:var(--font-mono);font-size:.7rem;padding:5px 10px;border-radius:5px;font-weight:500;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;}
+.contact-h{font-family:var(--font-display);font-size:1.5rem;font-weight:600;margin-bottom:12px;letter-spacing:-.01em;}
+.contact-p{color:var(--text2);margin-bottom:30px;max-width:400px;font-size:.96rem;}
+.clinks-list{display:flex;flex-direction:column;gap:10px;}
+.citem{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px;transition:.2s;}
+.citem:hover{border-color:var(--accent);transform:translateX(3px);}
+.cicon{width:34px;height:34px;border-radius:8px;background:var(--accent-dim);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.clabel{font-family:var(--font-mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);}
+.cval{font-size:.87rem;font-weight:500;margin-top:1px;}
+.form{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:26px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fg{margin-bottom:16px;}
+.fl{font-family:var(--font-mono);font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);display:block;margin-bottom:7px;}
+.fi,.fta{width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:11px 13px;color:var(--text);font-family:var(--font-body);font-size:.92rem;outline:none;transition:border-color .2s;}
+.fi:focus,.fta:focus{border-color:var(--accent);}
+.fta{min-height:104px;resize:vertical;}
+.btn-send{width:100%;background:var(--accent);color:#181008;border:none;padding:13px;border-radius:9px;font-family:var(--font-display);font-size:.9rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s;}
+.btn-send:hover{filter:brightness(1.08);}
+.btn-send:disabled{opacity:.6;cursor:not-allowed;}
+
+footer{padding:30px 6%;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;color:var(--text3);font-family:var(--font-mono);font-size:.76rem;max-width:1180px;margin:0 auto;}
+.footer-links{display:flex;gap:20px;}
+.fl-a{color:var(--text2);text-decoration:none;font-weight:500;}
+.fl-a:hover{color:var(--accent);}
+
+.toast{position:fixed;bottom:26px;right:26px;background:var(--panel);border:1px solid var(--border2);padding:14px 20px;border-radius:10px;font-size:.86rem;font-weight:500;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);transition:.3s;z-index:999;}
+.toast.show{opacity:1;transform:translateY(0);}
+.toast.ok{border-left:3px solid var(--green);}
+.toast.err{border-left:3px solid var(--red);}
+
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+@media (prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}}
+
+@media(max-width:860px){
+  .nav-links{display:none;}
+  .hero-avatar-wrap{display:none;}
+  .about-wrap,.contact-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .specstrip{grid-template-columns:1fr;}
+  .specstrip .sitem{border-right:none;border-bottom:1px solid var(--border);padding:16px 0;}
+  .specstrip .sitem:last-child{border-bottom:none;}
+  section{padding:80px 6%;}
+}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a class="logo" href="#home"><span class="logo-dot"></span>Jay.dev</a>
+  <a href="#home" class="logo"><img src="avatar.png" alt="Jay Shelke"/> Jay Shelke</a>
   <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
     <button class="theme-btn" id="themeToggle" aria-label="Toggle theme"></button>
-    <a href="#contact" class="btn-hire">Hire Me</a>
+    <a href="#contact" class="btn-hire">Hire me</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
+<section id="home" class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-tag"><span class="hero-tag-dot"></span>Available for Work &amp; Internship</div>
-      <h1 class="hero-name">
-        <span class="hero-sub">Hi, I'm a</span>
-        <span class="hero-main">Full Stack Developer</span>
-      </h1>
-      <p class="hero-role">$ <span>Building things for the web</span> &nbsp;—&nbsp; Front to Back</p>
-      <p class="hero-desc">I design and build fast, scalable web applications — crafting clean UIs and solid backends that actually ship.</p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn-primary">
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          View Projects
-        </a>
-        <a href="#contact" class="btn-outline">
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 4h12v8a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M2 4l6 5 6-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          Get In Touch
-        </a>
-      </div>
-      <div class="tech-strip">
-        <span class="tech-label">Stack —</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:#61dafb"></span>React</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:#3c873a"></span>Node.js</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:#f7df1e"></span>JavaScript</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:#13aa52"></span>MongoDB</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:#f58219"></span>Express</span>
-      </div>
-    </div>
+  <div class="hero-avatar-wrap">
+    <img src="avatar.png" alt="Jay Shelke" class="hero-avatar"/>
+    <span class="hero-avatar-tag">Pune, IN</span>
+  </div>
+  <div class="status-row"><span class="status-dot"></span> open to full-stack &amp; backend roles, internships</div>
+  <h1>Hi, I'm Jay Shelke — a <span class="hl">full-stack developer</span> building complete, working products.</h1>
+  <p class="sub">I work across the MERN stack, building applications end to end — from the database and API layer to the interface. I enjoy solving practical problems like real-time updates, payment flows, and keeping user data secure and organized.</p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn-primary">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      View projects
+    </a>
+    <a href="#contact" class="btn-outline">Get in touch</a>
+  </div>
+
+  <div class="specstrip">
+    <div class="sitem"><b>03</b><span>Shipped products</span></div>
+    <div class="sitem"><b>MERN</b><span>Core stack</span></div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="slabel">About Me</div>
-  <h2 class="stitle">The person <em>behind the code</em></h2>
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <p>Hey! I'm a passionate <strong>Full Stack Developer</strong> based in India, with a knack for turning ideas into real, working products. I love the challenge of building both the user-facing experience and the systems that power it.</p>
-      <p>I've worked on projects ranging from <strong>REST APIs and database design</strong> to <strong>responsive React UIs</strong>. I write code that's clean, maintainable, and actually does what it says.</p>
-      <p>Currently looking for opportunities where I can grow fast, ship real features, and work alongside people who care about quality.</p>
-      <div class="about-stats">
-        <div><div class="stat-num">3</div><div class="stat-label">Projects Shipped</div></div>
-        <div><div class="stat-num">14</div><div class="stat-label">Technologies</div></div>
-        <div><div class="stat-num">&#8734;</div><div class="stat-label">Curiosity</div></div>
-      </div>
+  <div class="slabel"><span class="idx">01</span> About</div>
+  <h2 class="stitle">A bit about <span class="hl">me</span> and how I like to build.</h2>
+  <div class="about-wrap">
+    <div class="reveal">
+      <p class="about-p">I'm <b>Jay Shelke</b>, a full-stack developer based in Pune, India. I like building complete products end to end rather than isolated demos — each of my three projects covers a different real-world problem: <b>real-time messaging</b>, <b>a transactional payments flow</b>, and <b>secure, per-user data handling</b>.</p>
+      <p class="about-p">I try to make thoughtful choices in what I build — using rate limiters, cleaning up related data on deletion, using database aggregation where it makes sense, and keeping authentication secure. These are the details I care about getting right.</p>
+      <p class="about-p">Currently looking for a <b>full-stack or backend-leaning developer role or internship</b> where I can keep learning and contribute to a product-first team.</p>
     </div>
     <div class="reveal d2">
-      <div class="terminal">
-        <div class="t-bar">
-          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
-          <span class="t-bar-title">jay@dev ~ zsh</span>
-        </div>
-        <div class="t-body">
-          <div><span class="cd">~</span> <span class="cg">whoami</span></div>
-          <div><span class="cp">Jay Shelke</span> &mdash; Full Stack Dev</div>
-          <div>&nbsp;</div>
-          <div><span class="cd">~</span> <span class="cg">cat</span> skills.json</div>
-          <div><span class="cy">{</span></div>
-          <div>&nbsp;&nbsp;<span class="cp">"frontend"</span>: <span class="cg">"React, Tailwind, JS"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="cp">"backend"</span>: <span class="cg">"Node, Express, Java"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="cp">"db"</span>: <span class="cg">"MongoDB, MySQL"</span>,</div>
-          <div>&nbsp;&nbsp;<span class="cp">"devops"</span>: <span class="cg">"Git, Docker, Render"</span></div>
-          <div><span class="cy">}</span></div>
-          <div>&nbsp;</div>
-          <div><span class="cd">~</span> <span class="cg">echo</span> $STATUS</div>
-          <div><span class="cg">&#10003;</span> Open to opportunities<span class="cursor"></span></div>
+      <div class="skills-block">
+        <div class="skills-head">Toolset</div>
+        <div class="skills-grid">
+          <div class="skill-chip cat-language"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">Java</span></div><span class="sc-cat">Language</span></div>
+          <div class="skill-chip cat-language"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">JavaScript</span></div><span class="sc-cat">Language</span></div>
+          <div class="skill-chip cat-frontend"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">HTML</span></div><span class="sc-cat">Frontend</span></div>
+          <div class="skill-chip cat-frontend"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">CSS</span></div><span class="sc-cat">Frontend</span></div>
+          <div class="skill-chip cat-backend"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">Node.js</span></div><span class="sc-cat">Backend</span></div>
+          <div class="skill-chip cat-backend"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">Express.js</span></div><span class="sc-cat">Backend</span></div>
+          <div class="skill-chip cat-database"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">MongoDB</span></div><span class="sc-cat">Database</span></div>
+          <div class="skill-chip cat-database"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">MySQL</span></div><span class="sc-cat">Database</span></div>
+          <div class="skill-chip cat-security"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">JWT Auth</span></div><span class="sc-cat">Security</span></div>
+          <div class="skill-chip cat-tools"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">Git</span></div><span class="sc-cat">Tools</span></div>
+          <div class="skill-chip cat-tools"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">GitHub</span></div><span class="sc-cat">Tools</span></div>
+          <div class="skill-chip cat-tools"><div class="sc-top"><span class="sc-dot"></span><span class="sc-name">Docker</span></div><span class="sc-cat">Tools</span></div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" class="skills-section">
-  <div class="slabel">Skills</div>
-  <h2 class="stitle">What I <em>work with</em></h2>
-
-  <div class="skill-group reveal">
-    <div class="sg-label">Frontend</div>
-    <div class="pills">
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32"><path d="M4 3l2.4 27L16 33l9.6-3L28 3H4z" fill="#E44D26"/><path d="M16 30.4V5.6H25.6L23.6 27.2 16 30.4z" fill="#F16529"/><path d="M16 13.6h4.8l.4-4H16V5.6h9.6L24.8 20H16v-6.4z" fill="#fff"/><path d="M16 22.4h-.016L12.4 21.2l-.24-2.8H7.6l.48 5.6L16 27.2V22.4z" fill="#EBEBEB"/><path d="M16 13.6v4H11.6l-.4-4H16zM16 5.6v4H7.6l-.4-4H16z" fill="#EBEBEB"/></svg></div>HTML5</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32"><path d="M4 3l2.4 27L16 33l9.6-3L28 3H4z" fill="#1572B6"/><path d="M16 30.4V5.6H25.6L23.6 27.2 16 30.4z" fill="#33A9DC"/><path d="M16 13.6h4.8l.4-4H16V5.6h9.6l-1.6 14.4-1.6.4L16 22v-8.4z" fill="#fff"/><path d="M16 13.6H11.6l.4 4H16v-4zM16 5.6H7.6l.4 4H16V5.6zM16 22.4l-.016.004-3.584-1.204-.24-2.8H7.6l.48 5.6L16 27.2V22.4z" fill="#EBEBEB"/></svg></div>CSS3</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="3" fill="#F7DF1E"/><path d="M9.2 24.8l2.4-1.44c.46.8.88 1.48 1.88 1.48.96 0 1.56-.38 1.56-1.84V14.4h3v8.62c0 3.04-1.78 4.42-4.38 4.42-2.34 0-3.7-1.22-4.46-2.66zM19.4 24.46l2.4-1.38c.62 1.02 1.44 1.76 2.86 1.76 1.2 0 1.96-.6 1.96-1.44 0-1-.78-1.36-2.1-1.94l-.72-.3c-2.08-.88-3.46-2-3.46-4.34 0-2.16 1.64-3.8 4.22-3.8 1.84 0 3.16.64 4.1 2.3l-2.28 1.46c-.5-.88-1.02-1.22-1.82-1.22-.82 0-1.34.52-1.34 1.22 0 .86.52 1.2 1.74 1.74l.72.3c2.46 1.04 3.84 2.12 3.84 4.52 0 2.6-2.04 4-4.78 4-2.68 0-4.42-1.28-5.34-2.88z" fill="#000"/></svg></div>JavaScript</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="3" fill="#61DAFB"/><ellipse cx="16" cy="16" rx="14" ry="5.5" stroke="#61DAFB" stroke-width="1.5"/><ellipse cx="16" cy="16" rx="14" ry="5.5" stroke="#61DAFB" stroke-width="1.5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="14" ry="5.5" stroke="#61DAFB" stroke-width="1.5" transform="rotate(120 16 16)"/></svg></div>React.js</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#7952B3"/><path d="M9 8h8.5c3.5 0 5.5 1.6 5.5 4.2 0 1.8-1 3.1-2.6 3.6 2 .4 3.4 1.8 3.4 3.9 0 3-2.2 4.3-5.8 4.3H9V8zm3 6.5h5c1.5 0 2.4-.7 2.4-1.9 0-1.3-.9-1.9-2.4-1.9H12v3.8zm0 6.8h5.4c1.7 0 2.7-.7 2.7-2.1s-1-2.1-2.7-2.1H12v4.2z" fill="white"/></svg></div>Bootstrap</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="none"><path d="M21.5 19.2c.54-.62.86-1.43.86-2.32a3.52 3.52 0 00-3.52-3.52c-.28 0-.55.04-.8.1a3.68 3.68 0 00-3.36-2.16 3.68 3.68 0 00-3.68 3.68c0 .1 0 .2.02.3A2.76 2.76 0 008.24 18c0 1.52 1.24 2.76 2.76 2.76h9.76c.26 0 .5-.04.74-.1" stroke="#764ABC" stroke-width="1.4" stroke-linecap="round"/><path d="M16 21.5v3M13 22.5l-1.5 2.5M19 22.5l1.5 2.5" stroke="#764ABC" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="26" r="1.2" fill="#764ABC"/><circle cx="11" cy="26" r="1.2" fill="#764ABC"/><circle cx="21" cy="26" r="1.2" fill="#764ABC"/></svg></div>Redux</div>
-    </div>
-  </div>
-
-  <div class="skill-group reveal d1">
-    <div class="sg-label">Backend</div>
-    <div class="pills">
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32"><path d="M16 3.5L4 10v12L16 28.5 28 22V10L16 3.5z" fill="#3C873A"/><text x="9" y="20" font-family="Arial" font-weight="bold" font-size="8" fill="white">js</text></svg></div>Node.js</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="4" fill="#000"/><text x="5" y="22" font-family="Arial" font-weight="bold" font-size="13" fill="white">Ex</text></svg></div>Express.js</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="rgba(124,109,250,0.15)" stroke="rgba(124,109,250,0.4)" stroke-width="1"/><text x="3" y="21" font-family="Arial" font-weight="900" font-size="8" fill="#a98bfa">OOP</text></svg></div>OOP</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="none"><path d="M12 28s-1.5.9.06 1.2c2.7.36 4.08.3 7.08-.3 0 0 .78.5 1.86.92-6.66 2.84-15.06-.16-9-1.82z" fill="#4E7896"/><path d="M18.6 17.4c1.64 1.86-.44 3.52-.44 3.52s4.18-2.16 2.26-4.82c-1.8-2.5-3.18-3.74 4.28-8 0 0-11.68 2.94-6.1 9.3z" fill="#F58219"/><path d="M20.4 3S23.4 6.2 17.3 11c-5.4 4.26-1.24 6.68 0 9.48-3.16-2.84-5.48-5.34-3.92-7.66 1.82-2.88 8.52-4.5 7.02-9.82z" fill="#F58219"/></svg></div>Java</div>
-    </div>
-  </div>
-
-  <div class="skill-group reveal d2">
-    <div class="sg-label">Database</div>
-    <div class="pills">
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="8" rx="12" ry="4" fill="#13AA52"/><path d="M4 8v5c0 2.2 5.4 4 12 4s12-1.8 12-4V8" fill="#13AA52" opacity=".7"/><path d="M4 13v5c0 2.2 5.4 4 12 4s12-1.8 12-4v-5" fill="#13AA52" opacity=".5"/><path d="M4 18v5c0 2.2 5.4 4 12 4s12-1.8 12-4v-5" fill="#13AA52" opacity=".35"/><ellipse cx="16" cy="8" rx="12" ry="4" fill="#13AA52"/><ellipse cx="16" cy="8" rx="9" ry="2.5" fill="#57D18A" opacity=".5"/></svg></div>MongoDB</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="8" rx="12" ry="4" fill="#00618A"/><path d="M4 8v5c0 2.2 5.4 4 12 4s12-1.8 12-4V8" fill="#00618A" opacity=".7"/><path d="M4 13v5c0 2.2 5.4 4 12 4s12-1.8 12-4v-5" fill="#00618A" opacity=".5"/><path d="M4 18v5c0 2.2 5.4 4 12 4s12-1.8 12-4v-5" fill="#00618A" opacity=".35"/><ellipse cx="16" cy="8" rx="12" ry="4" fill="#00618A"/><text x="10" y="11" font-family="Arial" font-weight="bold" font-size="5" fill="white">MySQL</text></svg></div>MySQL</div>
-    </div>
-  </div>
-
-  <div class="skill-group reveal d3">
-    <div class="sg-label">Tools &amp; DevOps</div>
-    <div class="pills">
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="none"><path d="M29.5 14.5L17.5 2.5a1.7 1.7 0 00-2.4 0L12.5 5l3 3a2 2 0 012.5 2.5l2.9 2.9a2 2 0 11-1.4 1.4L16.7 12v7.3a2 2 0 11-2 0V11.8a2 2 0 01-1.1-2.6L10.7 6.3 2.5 14.5a1.7 1.7 0 000 2.4l12 12a1.7 1.7 0 002.4 0l12.6-12.6a1.7 1.7 0 000-2.4z" fill="#F05032"/></svg></div>Git</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 2C8.27 2 2 8.27 2 16c0 6.19 4.01 11.43 9.57 13.29.7.13.96-.3.96-.68v-2.38c-3.9.85-4.72-1.88-4.72-1.88-.64-1.62-1.56-2.05-1.56-2.05-1.27-.87.1-.85.1-.85 1.4.1 2.14 1.44 2.14 1.44 1.25 2.14 3.28 1.52 4.08 1.16.13-.9.49-1.52.89-1.87-3.11-.35-6.38-1.56-6.38-6.93 0-1.53.55-2.78 1.44-3.76-.14-.36-.62-1.78.14-3.7 0 0 1.18-.38 3.86 1.44a13.4 13.4 0 017.02 0c2.68-1.82 3.86-1.44 3.86-1.44.76 1.92.28 3.34.14 3.7.9.98 1.44 2.23 1.44 3.76 0 5.38-3.28 6.57-6.4 6.92.5.44.96 1.3.96 2.62v3.88c0 .38.26.81.97.67C25.99 27.43 30 22.19 30 16 30 8.27 23.73 2 16 2z"/></svg></div>GitHub</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="none"><rect x="3" y="12" width="8" height="6" rx="1" fill="#2496ED"/><rect x="12" y="12" width="8" height="6" rx="1" fill="#2496ED"/><rect x="21" y="12" width="8" height="6" rx="1" fill="#2496ED"/><rect x="7" y="7" width="8" height="6" rx="1" fill="#2496ED"/><rect x="16" y="7" width="8" height="6" rx="1" fill="#2496ED"/><rect x="12" y="2" width="8" height="6" rx="1" fill="#2496ED"/></svg></div>Docker</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="none"><path d="M23.4 2.6L12.8 13.2 6.4 8 2 11.2l6 4.8-6 4.8L6.4 24l6.4-5.2 10.6 10.6 3.6-1.6V4.2L23.4 2.6z" fill="#007ACC"/></svg></div>VS Code</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="5" fill="url(#ij2)"/><defs><linearGradient id="ij2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#FC5DCE"/><stop offset=".5" stop-color="#8A2BE2"/><stop offset="1" stop-color="#2196F3"/></linearGradient></defs><rect x="7" y="22" width="10" height="2" rx="1" fill="white"/><text x="6" y="18" font-family="Arial" font-weight="900" font-size="9" fill="white">IJ</text></svg></div>IntelliJ</div>
-      <div class="pill"><div class="picon"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" fill="#FF6C37"/><path d="M22 10L13 19l-3-3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Postman</div>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="slabel">Projects</div>
-  <h2 class="stitle">Things I've <em>built</em></h2>
-  <div class="projects-grid">
+  <div class="slabel"><span class="idx">02</span> Selected work</div>
+  <h2 class="stitle">A few projects I've <span class="hl">built</span>.</h2>
 
-    <!-- DevVision Featured -->
-    <div class="card card-featured reveal">
-      <div class="thumb">
-        <div class="tdv">
-          <div class="tdv-grid"></div>
-          <div class="tdv-inner">
-            <div class="tdv-icon"><svg viewBox="0 0 24 24" fill="white" width="26" height="26"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-            <div class="tdv-name">DevVision</div>
-            <div class="tdv-sub">AI Code Review Platform</div>
-          </div>
-          <div class="tdv-glow"></div>
+  <!-- HEALTHLENSE -->
+  <div class="project-card reveal">
+    <div class="pc-head">
+      <div class="pc-id">
+        <img src="healthlense.png" alt="HealthLense logo" class="pc-logo"/>
+        <div>
+          <div class="pc-title-row"><span class="pc-title">HealthLense</span></div>
         </div>
       </div>
-      <div class="cbody">
-        <div class="cheader">
-          <div>
-            <span class="cbadge">Featured Project</span>
-            <div class="cname">DevVision — AI Code Review Platform</div>
-          </div>
-          <div class="clinks">
-            <a href="https://github.com/imjay05/DevVision" target="_blank" class="clink" title="GitHub"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.087.636-1.337-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg></a>
-            <a href="https://devvision.vercel.app" target="_blank" class="clink" title="Live"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-          </div>
-        </div>
-        <p class="cdesc">An AI-powered code review platform where developers paste code and get instant detailed feedback — quality score out of 10, strengths, issues, fixes, and improvement tips. Supports multiple languages with a 7-day analytics dashboard tracking scores and language breakdowns.</p>
-        <div class="deploy-row">
-          <span class="badge bv"><span class="bd"></span>Vercel</span>
-          <span class="badge br"><span class="bd"></span>Render</span>
-          <span class="badge bm"><span class="bd"></span>MongoDB Atlas</span>
-        </div>
-        <div class="stack-row">
-          <span class="stag">React</span><span class="stag">Node.js</span><span class="stag">Express</span>
-          <span class="stag">MongoDB</span><span class="stag">Grok API</span><span class="stag">Recharts</span><span class="stag">JWT</span>
-        </div>
-      </div>
-      </div> 
-
-      <!-- Tracify Featured -->
-    <div class="card card-featured reveal">
-      <div class="thumb">
-        <div class="ttracify">
-          <div class="ttracify-grid"></div>
-          <div class="ttracify-inner">
-            <img src="tracify_logo.png" alt="Tracify Logo">
-            <div class="ttracify-name">Tracify</div>
-            <div class="ttracify-sub">Real-Time Location Tracker</div>
-          </div>
-          <div class="ttracify-glow"></div>
-        </div>
-      </div>
-      <div class="cbody">
-        <div class="cheader">
-          <div>
-            <span class="cbadge">Project</span>
-            <div class="cname">Tracify — Real-Time Location Tracker</div>
-          </div>
-          <div class="clinks">
-            <a href="https://github.com/imjay05/Tracify" target="_blank" class="clink" title="GitHub"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.087.636-1.337-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg></a>
-            <a href="https://tracify-ho77.onrender.com" target="_blank" class="clink" title="Live"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-          </div>
-        </div>
-        <p class="cdesc">A real-time location tracking web app where users enter their name, get a private room link, and share it with friends. Only people with the link can see each other's live location on an interactive map — markers update instantly as you move.</p>
-        <div class="deploy-row">
-          <span class="badge br"><span class="bd"></span>Render</span>
-        </div>
-        <div class="stack-row">
-          <span class="stag">Node.js</span><span class="stag">Express</span><span class="stag">Socket.io</span>
-          <span class="stag">Leaflet.js</span><span class="stag">EJS</span>
-        </div>
+      <div class="pc-links">
+        <a href="https://healthlense.vercel.app/" target="_blank">Live demo</a>
+        <a href="https://github.com/imjay05" target="_blank">GitHub</a>
       </div>
     </div>
-        
+    <div class="pc-body">
+      <p class="pc-desc">Upload a lab report or describe symptoms, and HealthLense turns it into a plain-language explanation using Groq-powered AI. It also includes a real-time nearby-lab finder built on OpenStreetMap.</p>
+      <div class="pc-tags">
+        <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">Groq AI</span><span class="tag">Cloudinary</span><span class="tag">Socket.io</span><span class="tag">Leaflet.js</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCTRADE -->
+  <div class="project-card reveal d2">
+    <div class="pc-head">
+      <div class="pc-id">
+        <img src="arctrade.png" alt="ArcTrade logo" class="pc-logo"/>
+        <div>
+          <div class="pc-title-row"><span class="pc-title">ArcTrade</span></div>
+        </div>
+      </div>
+      <div class="pc-links">
+        <a href="https://arctrade-stocks.vercel.app" target="_blank">Live demo</a>
+        <a href="https://github.com/imjay05" target="_blank">GitHub</a>
+      </div>
+    </div>
+    <div class="pc-body">
+      <p class="pc-desc">A stock trading simulator where trades are processed as MongoDB transactions and wallet top-ups go through Razorpay with signature verification. Includes sector-wise holdings breakdown and live price tracking.</p>
+      <div class="pc-tags">
+        <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB Transactions</span><span class="tag">Razorpay</span><span class="tag">JWT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIBLEY -->
+  <div class="project-card reveal d3">
+    <div class="pc-head">
+      <div class="pc-id">
+        <img src="vibley.png" alt="Vibley logo" class="pc-logo"/>
+        <div>
+          <div class="pc-title-row"><span class="pc-title">Vibley</span></div>
+        </div>
+      </div>
+      <div class="pc-links">
+        <a href="https://vibley-web.vercel.app/" target="_blank">Live demo</a>
+        <a href="https://github.com/imjay05" target="_blank">GitHub</a>
+      </div>
+    </div>
+    <div class="pc-body">
+      <p class="pc-desc">A real-time messaging app for mutual friends only, with ephemeral mood posts called "Vibes" that expire after 24 hours. Built with React, Node.js, Express, MongoDB, and Socket.io for instant message delivery and live updates.</p>
+      <div class="pc-tags">
+        <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">Socket.io</span><span class="tag">Cloudinary</span><span class="tag">Tailwind</span>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact-section">
-  <div class="slabel">Contact</div>
-  <h2 class="stitle">Let's <em>work together</em></h2>
+  <div class="slabel"><span class="idx">03</span> Contact</div>
+  <h2 class="stitle">Let's <span class="hl">work together</span></h2>
   <div class="contact-grid">
     <div class="reveal">
       <div class="contact-h">Open to opportunities</div>
-      <div class="contact-p">Looking for a full-stack developer role or internship. I respond quickly — let's talk about what you're building.</div>
+      <div class="contact-p">Looking for a full-stack or backend developer role, or an internship. I read every message and reply quickly — tell me what you're building.</div>
       <div class="clinks-list">
         <a href="mailto:imjaydigambarshelke@gmail.com" class="citem">
           <div class="cicon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
@@ -261,11 +352,11 @@
           <div class="fg"><label class="fl">Name</label><input type="text" class="fi" placeholder="John Doe" id="fname"/></div>
           <div class="fg"><label class="fl">Email</label><input type="email" class="fi" placeholder="john@company.com" id="femail"/></div>
         </div>
-        <div class="fg"><label class="fl">Subject</label><input type="text" class="fi" placeholder="Job opportunity / Internship" id="fsubject"/></div>
+        <div class="fg"><label class="fl">Subject</label><input type="text" class="fi" placeholder="Job opportunity / internship" id="fsubject"/></div>
         <div class="fg"><label class="fl">Message</label><textarea class="fta" placeholder="Tell me about the role or project..." id="fmessage"></textarea></div>
         <button class="btn-send" id="sendBtn" onclick="sendMsg()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          Send Message
+          Send message
         </button>
       </div>
     </div>
@@ -273,15 +364,101 @@
 </section>
 
 <footer>
-  <span>&copy; 2025 Jay Shelke &mdash; Built with passion &amp; dedication</span>
+  <span>&copy; 2026 Jay Shelke</span>
   <div class="footer-links">
     <a href="https://github.com/imjay05" target="_blank" class="fl-a">GitHub</a>
     <a href="https://www.linkedin.com/in/jay-shelke-4323a22a5/" target="_blank" class="fl-a">LinkedIn</a>
   </div>
 </footer>
-
 <div class="toast" id="toast"></div>
 
-<script src="script.js"></script>
+<script>
+const html = document.documentElement;
+html.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  if ('IntersectionObserver' in window) {
+    document.body.classList.add('js-anim');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  }
+});
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) cur = s.id;
+  });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+}, { passive: true });
+
+function showToast(msg, ok = true) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast ' + (ok ? 'ok' : 'err');
+  requestAnimationFrame(() => requestAnimationFrame(() => t.classList.add('show')));
+  setTimeout(() => t.classList.remove('show'), 4200);
+}
+
+async function sendMsg() {
+  const name    = document.getElementById('fname').value.trim();
+  const email   = document.getElementById('femail').value.trim();
+  const subject = document.getElementById('fsubject').value.trim();
+  const msg     = document.getElementById('fmessage').value.trim();
+
+  if (!name || !email || !msg) {
+    showToast('Please fill in all required fields.', false);
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showToast('Please enter a valid email address.', false);
+    return;
+  }
+
+  const btn = document.getElementById('sendBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    const res = await fetch('https://formspree.io/f/mgopaojp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ name, email, subject, message: msg })
+    });
+    if (res.ok) {
+      showToast("Message sent! I'll reply soon.");
+      ['fname', 'femail', 'fsubject', 'fmessage'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+    } else {
+      showToast('Something went wrong. Email me directly.', false);
+    }
+  } catch (e) {
+    showToast('Network error. Try emailing directly.', false);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = `
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+      Send message`;
+  }
+}
+</script>
 </body>
 </html>
