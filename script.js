@@ -1,13 +1,11 @@
-// Theme Toggle
 const html = document.documentElement;
-html.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
+html.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
 document.getElementById('themeToggle').addEventListener('click', () => {
   const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
 });
 
-// Reveal animations — content visible by default; js-anim enables fade-in only if IntersectionObserver works
 window.addEventListener('DOMContentLoaded', () => {
   if ('IntersectionObserver' in window) {
     document.body.classList.add('js-anim');
@@ -23,7 +21,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Active nav link on scroll
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
@@ -34,7 +31,6 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
 }, { passive: true });
 
-// Toast notification
 function showToast(msg, ok = true) {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -43,7 +39,6 @@ function showToast(msg, ok = true) {
   setTimeout(() => t.classList.remove('show'), 4200);
 }
 
-// Contact form submission
 async function sendMsg() {
   const name    = document.getElementById('fname').value.trim();
   const email   = document.getElementById('femail').value.trim();
@@ -86,6 +81,6 @@ async function sendMsg() {
         <line x1="22" y1="2" x2="11" y2="13"/>
         <polygon points="22 2 15 22 11 13 2 9 22 2"/>
       </svg>
-      Send Message`;
+      Send message`;
   }
 }
