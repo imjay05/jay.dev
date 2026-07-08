@@ -373,3 +373,32 @@ h2.stitle .hl,.hero h1 .hl{
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
+
+.cursor-glow{
+  position:fixed;
+  top:0;
+  left:0;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,157,77,.14) 0%, rgba(95,216,207,.07) 40%, transparent 70%);
+  pointer-events:none;
+  z-index:1;
+  will-change:transform;
+  opacity:0;
+  transition:opacity .4s ease;
+}
+
+.cursor-glow.active{
+  opacity:1;
+}
+
+@media(max-width:860px){
+  .cursor-glow{
+    display:none;
+  }
+}
+
+.btn-primary, .btn-outline, .btn-hire, .btn-send{
+  transition:transform .18s cubic-bezier(.2,.8,.3,1.1), filter .2s, opacity .2s, box-shadow .2s;
+}

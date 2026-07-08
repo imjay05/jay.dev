@@ -196,3 +196,44 @@
     background:var(--cyan);
     color:var(--bg);
 }
+
+.project-card, .skill-chip, .citem, .form{
+  position:relative;
+  isolation:isolate;
+}
+
+.project-card::before, .skill-chip::before, .citem::before, .form::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  padding:1px;
+  background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%), var(--accent), transparent 70%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:0;
+  transition:opacity .3s ease;
+  pointer-events:none;
+  z-index:2;
+}
+
+.project-card:hover::before, .skill-chip:hover::before, .citem:hover::before, .form:hover::before{
+  opacity:1;
+}
+
+.project-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(255,157,77,.08), transparent 60%);
+  opacity:0;
+  transition:opacity .4s ease;
+  pointer-events:none;
+  z-index:0;
+}
+
+.project-card:hover::after{
+  opacity:1;
+}

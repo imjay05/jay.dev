@@ -84,3 +84,52 @@ async function sendMsg() {
       Send message`;
   }
 }
+
+if (window.matchMedia('(pointer: fine)').matches) {
+  const glow = document.getElementById('cursorGlow');
+  let targetX = window.innerWidth / 2, targetY = window.innerHeight / 2;
+  let curX = targetX, curY = targetY;
+
+  window.addEventListener('mousemove', (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+    glow.classList.add('active');
+  });
+
+  document.addEventListener('mouseleave', () => glow.classList.remove('active'));
+
+  (function animateGlow() {
+    curX += (targetX - curX) * 0.09;
+    curY += (targetY - curY) * 0.09;
+    glow.style.transform = `translate(${curX - 300}px, ${curY - 300}px)`;
+    requestAnimationFrame(animateGlow);
+  })();
+}
+
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const rotateX = ((y - rect.height / 2) / rect.height) * -6;
+    const rotateY = ((x - rect.width / 2) / rect.width) * 6;
+    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transition = 'transform .5s ease';
+    card.style.transform = '';
+    setTimeout(() => { card.style.transition = ''; }, 500);
+  });
+});
+
+document.querySelectorAll('.btn-primary, .btn-outline, .btn-hire, .btn-send').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
+});
